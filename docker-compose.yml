@@ -1,0 +1,16 @@
+version: '3'
+services:
+  ma_bdd:
+    build: 
+      context: ./ma_bdd
+      dockerfile: Dockerfile
+    ports: 
+      - "5432:5432"
+  mon_app_node_js:
+    build: 
+      context: ./mon_app_nodejs
+      dockerfile: Dockerfile
+    ports: 
+      - "3000:3000"
+    depends_on: 
+      - ma_bdd
